@@ -1,5 +1,5 @@
 
-# 📘 DFCU Payment Gateway – API Documentation & Deployment Guide
+# 📘 Payment Gateway – API Documentation & Deployment Guide
 
 ## 📖 Table of Contents
 
@@ -348,7 +348,7 @@ This project implements **Clean Architecture** principles to create a modular, m
 ## 📦 Project Structure
 
 ```
-Dfcu/
+GATEWAY/
 ├── PaymentsGateway.API/           # ASP.NET Core Web API (Presentation Layer)
 ├── PaymentsGateway.Application/   # Application Layer (Use Cases)
 ├── PaymentsGateway.Domain/        # Domain Layer (Core Business Logic)
@@ -381,7 +381,7 @@ The mobile client interacts with the API via HTTP:
 - Checks payment status
 - Shows transaction feedback
 
-🔗 The test client is available here [DFCU APP](https://github.com/Zeph180/dfcu-payment-gateway.git)
+🔗 The test client is available here [CLIENT APP](https://github.com/Zeph180/dfcu-payment-gateway.git)
 
 ---
 
