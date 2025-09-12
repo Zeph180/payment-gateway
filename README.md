@@ -1,5 +1,5 @@
 
-# 📘 DFCU Payment Gateway – API Documentation & Deployment Guide
+# 📘 Payment Gateway – API Documentation & Deployment Guide
 
 ## 📖 Table of Contents
 
@@ -51,7 +51,7 @@
 
 ---
 
-## 🔹 POST `/api/payments`
+## 🔹 POST `/initiate`
 
 Initiates a payment transaction.
 
@@ -87,7 +87,7 @@ Initiates a payment transaction.
 
 ---
 
-## 🔹 GET `/api/payments/{transactionReference}`
+## 🔹 GET `/status/{transactionReference}`
 
 Retrieves the status of a transaction using its reference.
 
@@ -147,7 +147,15 @@ cd Dfcu
 CREATE DATABASE DfcuPayments;
 ```
 
-### 🔹 b. Create stored procedures
+
+### 🔹 b. Apply Migrations
+
+```bash
+cd Dfcu.PaymentGateway.Infrastructure
+dotnet ef database update
+```
+
+### 🔹 c. Create stored procedures
 
 ```sql
 CREATE PROCEDURE sp_AddTransaction
@@ -178,7 +186,7 @@ WHERE Id = @Id
 END
 ```
 
-### 🔹 b. Update `appsettings.json` in `Dfcu.PaymentGateway.Api`
+### 🔹 d. Update `appsettings.json` in `Dfcu.PaymentGateway.Api`
 
 ```json
 {
@@ -187,14 +195,6 @@ END
   }
 }
 ```
-
-### 🔹 c. Apply Migrations
-
-```bash
-cd Dfcu.PaymentGateway.Infrastructure
-dotnet ef database update
-```
-
 ---
 
 ## ⚙️ Step 3: Build & Run Locally
@@ -348,7 +348,7 @@ This project implements **Clean Architecture** principles to create a modular, m
 ## 📦 Project Structure
 
 ```
-Dfcu/
+GATEWAY/
 ├── PaymentsGateway.API/           # ASP.NET Core Web API (Presentation Layer)
 ├── PaymentsGateway.Application/   # Application Layer (Use Cases)
 ├── PaymentsGateway.Domain/        # Domain Layer (Core Business Logic)
@@ -381,7 +381,7 @@ The mobile client interacts with the API via HTTP:
 - Checks payment status
 - Shows transaction feedback
 
-🔗 The test client is available here [DFCU APP](https://github.com/Zeph180/dfcu-payment-gateway.git)
+🔗 The test client is available here [CLIENT APP](https://github.com/Zeph180/dfcu-payment-gateway.git)
 
 ---
 
